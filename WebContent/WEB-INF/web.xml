@@ -9,4 +9,26 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <!-- Instalacion del Framework Jersey -->
+  <!-- Se define un servlet con nombre jersey- servlet con los parametros de aplicación -->
+  <servlet>
+    <servlet-name>jersey-servlet</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+    <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.exercise45webservicesrest.services</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <!-- Asignar un URL mapping -->
+  <servlet-mapping>
+        <servlet-name>jersey-servlet</servlet-name>
+        <url-pattern>/*</url-pattern>			<!-- Con el /* se hizo totalmente de servicios -->
+    </servlet-mapping>
+    
+    
+    
 </web-app>

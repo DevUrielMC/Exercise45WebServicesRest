@@ -21,8 +21,8 @@ public class ConnectionFactory {
 	
 	//paso2 crear una instancia de la clase
 	
-	private static ConnectionFactory connection=null;
-	private static Connection conn=null;
+	private static ConnectionFactory connection =null;
+	public static Connection conn=null;
 	
 	
 	public static Connection getConnection() {
@@ -63,7 +63,7 @@ public class ConnectionFactory {
 	}
 	
 	//paso3 crear el metodo getInstance
-	public ConnectionFactory getInstance()
+	public static ConnectionFactory getInstance()
 	{
 		if(connection == null)
 		{

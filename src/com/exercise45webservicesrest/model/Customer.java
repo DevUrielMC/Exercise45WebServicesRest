@@ -104,13 +104,13 @@ public class Customer {
 
 
 
-	public boolean isSingle() {
+	public boolean getIsSingle() {
 		return isSingle;
 	}
 
 
 
-	public void setSingle(boolean isSingle) {
+	public void setIsSingle(boolean isSingle) {
 		this.isSingle = isSingle;
 	}
 
