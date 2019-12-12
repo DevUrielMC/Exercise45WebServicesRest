@@ -9,5 +9,5 @@ public interface DAOCustomer {
 	public boolean UpdateCustomer(Customer myCustomer);
 	public boolean DeleteCustomer(int idCustommer);
 	public Customer ReadCustomer(int idCustomer);
-	public ArrayList<Customer> ReadCustomer();
+	public ArrayList<Customer> ReadAllCustomer();
 }

@@ -129,9 +129,61 @@ public class DAOCustomerImpl implements DAOCustomer {
 	}
 
 	@Override
-	public ArrayList<Customer> ReadCustomer() {
-		// TODO Auto-generated method stub
-		return null;
+	@GET
+	public ArrayList<Customer> ReadAllCustomer() {  //es read all
+ArrayList<Customer> myCustomers = new ArrayList<Customer>();
+		
+		conn = getConnection();
+		Properties props = new Properties();
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("dao.properties");
+		try
+		{
+			props.load(in);
+			if(props!=null)
+			{
+				sentenciaSQL = props.getProperty("SQLReadAllCustomer");
+			}
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		try
+		{
+			pstmnt = conn.prepareStatement(sentenciaSQL);
+			rs = pstmnt.executeQuery();
+			while(rs.next())
+			{
+				Customer myCustomer = new Customer();
+				myCustomer.setIdCustomer(rs.getInt("idCustomer"));
+				myCustomer.setNameCustomer(rs.getString("nameCustomer"));
+				myCustomer.setAddressCustomer(rs.getString("addressCustomer"));
+				myCustomer.setAgeCustomer(rs.getInt("ageCustomer"));
+				myCustomer.setHeightCustomer(rs.getDouble("heightCustomer"));
+				myCustomer.setWeightCustomer(rs.getDouble("weightCustomer"));
+				myCustomer.setIsSingle(rs.getBoolean("isSingle"));
+				myCustomers.add(myCustomer);
+			}
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				rs.close();
+				pstmnt.close();
+				conn.close();
+			}
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return myCustomers;
 	}
 
 }
